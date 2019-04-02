@@ -36,9 +36,9 @@ public class Main
     System.out.println("}");
   }
 
-  public void go()
+  public void go(String bagName)
   {
-    factory.setBagClass("ArrayBag");
+    factory.setBagClass(bagName);
 
     try
     {
@@ -55,15 +55,24 @@ public class Main
       System.out.print("bag1 all:                    ");
       printAll(bag1);
 
+
       bag2 = factory.getBag();
       bag2.add("def");
       bag2.add("def");
       bag2.add("def");
       bag2.add("klm");
+      //System.out.println("removeAllCopies method is working");
+      //bag2.removeAllCopies();
+      //System.out.println("subtract method is working");
+      //bag2.subtract(bag1);
       System.out.print("bag2 all unique:             ");
       print(bag2);
       System.out.print("bag2 all:                    ");
       printAll(bag2);
+      System.out.println("toString method is working");
+      System.out.println(bag2.toString());
+      //System.out.println("countOf method is working");
+      //System.out.println(bag2.countOf("def"));
 
       bag3 = factory.getBag();
       bag3.addWithOccurrences("xyz", 5);
@@ -73,7 +82,9 @@ public class Main
       print(bag3);
       System.out.print("bag3 all:                    ");
       printAll(bag3);
-
+      //System.out.println("removeAllCopies method is working");
+      //bag3.removeAllCopies();
+      //printAll(bag3);
 
       System.out.print("createMergedAllOccurrences:  ");
       Bag<String> bag4 = bag1.createMergedAllOccurrences(bag3);
@@ -91,6 +102,13 @@ public class Main
 
   public static void main(String[] args)
   {
-    new Main().go();
+    System.out.println("----ArrayBag----");
+    new Main().go("ArrayBag");
+
+    System.out.println("----MapBag----");
+    new Main().go("MapBag");
+
+    System.out.println("----LinkedListBag----");
+    new Main().go("LinkedListBag");
   }
 }
