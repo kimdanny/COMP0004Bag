@@ -113,4 +113,9 @@ public interface Bag<T extends Comparable> extends Iterable<T>
   Return a standard iterator, giving each unique value in turn.
   public Iterator<T> iterator();
    */
+
+  void removeAllCopies();
+
+  Bag<T> subtract(Bag<T> bag);
+
 }
