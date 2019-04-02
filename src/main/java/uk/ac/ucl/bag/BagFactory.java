@@ -11,6 +11,7 @@ public class BagFactory<T extends Comparable>
 
   /**
    * Return the single factory object, creating it if necessary.
+   * Singleton design pattern
    * @return
    */
   public static BagFactory getInstance()
@@ -23,6 +24,7 @@ public class BagFactory<T extends Comparable>
   private String bagClass;
 
   // The constructor is private to prevent code in any other class creating an instance.
+  // Singleton
   private BagFactory()
   {
   }
@@ -58,9 +60,14 @@ public class BagFactory<T extends Comparable>
    */
   public Bag<T> getBag(int maxSize) throws BagException
   {
-    if (bagClass.equals("ArrayBag"))
-    {
-      return new ArrayBag<T>(maxSize);
+    if (bagClass.equals("ArrayBag")){
+      return new ArrayBag<>(maxSize);
+    }
+    else if (bagClass.equals("MapBag")){
+      return new MapBag<>(maxSize);
+    }
+    else if (bagClass.equals("LinkedListBag")){
+      return new LinkedListBag<>(maxSize);
     }
     throw new BagException
       ("Attempting to use BagFactory to create something that is not a Bag");
